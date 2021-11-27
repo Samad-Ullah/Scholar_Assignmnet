@@ -2,6 +2,7 @@ import React from 'react'
 import { Navigate } from 'react-router';
 import { Link } from 'react-router-dom';
 import { isAuthenticated } from '../API/api'
+import AddCountry from '../PopUp/AddCountry';
 
 function Assignment() {
 
@@ -9,6 +10,7 @@ function Assignment() {
   const AssignmnetSignout = () =>{
     if (typeof window !== "undefined") {
       localStorage.removeItem("jwt");
+      window.location.reload()
    
   }
 
@@ -20,7 +22,7 @@ function Assignment() {
       <>
       {isAuthenticated()?(
       <div>
-
+<AddCountry></AddCountry>
 <button style={{ fontSize: 18, backgroundColor: "#990099", color: "white", borderRadius: 5, border: "none", alignItems: "right", cursor: "pointer", float: "right" }} onClick={() => AssignmnetSignout()}>Logout</button>
 
 
