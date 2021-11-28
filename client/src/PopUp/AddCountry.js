@@ -1,8 +1,10 @@
-import React,{useState} from 'react'
-import {AppstoreAddOutlined} from '@ant-design/icons';
+import React, { useState } from 'react'
+import AddIcon from '@mui/icons-material/Add';
+import Typography from '@mui/material/Typography';
+import 'antd/dist/antd.css';
 import { Form, Input, Button, Card } from 'antd';
-import { Popover } from 'antd';
-
+import Box from '@mui/material/Box';
+import Modal from "@mui/material/Modal";
 
 
 const style = {
@@ -21,22 +23,27 @@ const style = {
 
 function AddCountry() {
 
-    const [country, setcountry] = useState("")
-    const [open, setOpen] = useState(false);
+    const [open, setopen] = useState(false)
+    const [countryName, setcountryName] = useState("")
 
-    
-    const handleOpen = () => setOpen(true);
-    const handleClose = () => setOpen(false);
+
+    const handleOpen = () => setopen(true);
+    const handleClose = () => setopen(false);
+
+
 
     const onFinish = (values) => {
         console.log(values)
         const country = {
-            'name': values.country,
-    
+            'name': values.name,
+         
+
         };
 
 
-// add api here       
+    
+
+
     };
 
     const onFinishFailed = (errorInfo) => {
@@ -44,22 +51,11 @@ function AddCountry() {
     };
 
 
- 
     return (
         <div>
-            {/* <AddIcon  */}
-            <Popover
-        content={<a onClick={handleClose}>Close</a>}
-        title="Title"
-        trigger="click"
-        visible={handleOpen}
-      
-      >
-        <Button type="primary"><AppstoreAddOutlined style={{ fontSize: "50", backgroundColor: "#f5f5e9", borderRadius: 50, color: "#FF668E" }} onClick={handleOpen} /></Button>
-      </Popover>
-            
+            <AddIcon style={{ fontSize: "50", backgroundColor: "#f5f5e9", borderRadius: 50, color: "#FF668E" }} onClick={handleOpen} />
 
-            {/* <Modal
+            <Modal
                 open={open}
                 onClose={handleClose}
                 aria-labelledby="modal-modal-title"
@@ -67,7 +63,7 @@ function AddCountry() {
             >
                 <Box sx={style}>
                     <Typography id="modal-modal-title" variant="h6" component="h2">
-                        Add Country
+                        Add Country to list
                     </Typography>
                     <div style={{ marginTop: 20 }}>
                         <Form
@@ -87,17 +83,17 @@ function AddCountry() {
                             style={{ marginTop: 40 }}
                         >
                             <Form.Item
-                                label="Name of country"
-                                name="country"
+                                label="Name of Country"
+                                name="name"
                                 rules={[
                                     {
 
-                                        message: 'Please input country!',
+                                        message: 'Please input your name!',
                                     },
                                 ]}
                                 style={{ marginLeft: -100, fontWeight: 600 }}
                             >
-                                <Input onChange={(e) => setcountry(e.target.value)} style={{ width: 250, border: "none", borderBottom: "2px solid purple" }} />
+                                <Input onChange={(e) => setcountryName(e.target.value)} style={{ width: 250, border: "none", borderBottom: "2px solid purple" }} />
                             </Form.Item>
                             <Form.Item
                                 wrapperCol={{
@@ -112,10 +108,11 @@ function AddCountry() {
                                 </Button>
                             </Form.Item>
                         </Form>
+
                     </div>
 
                 </Box>
-            </Modal> */}
+            </Modal>
         </div>
     )
 }
