@@ -5,7 +5,6 @@ import AssignmentRoutes from "./Router";
 function App() {
   return (
     <BrowserRouter>
-
       <AssignmentRoutes></AssignmentRoutes>
     </BrowserRouter>
   );
